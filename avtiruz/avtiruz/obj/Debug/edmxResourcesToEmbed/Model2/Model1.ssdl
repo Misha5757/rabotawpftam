@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Optovay_BazaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Pokunka">
+    <Key>
+      <PropertyRef Name="Number_chet" />
+    </Key>
+    <Property Name="Number_chet" Type="int" Nullable="false" />
+    <Property Name="Stoimost" Type="nvarchar(max)" />
+    <Property Name="Srok_postavki" Type="nvarchar(max)" />
+    <Property Name="kol_vo_tovar" Type="nvarchar(max)" />
+    <Property Name="Code_tovar" Type="int" />
+    <Property Name="Postavchik" Type="int" />
+  </EntityType>
+  <EntityType Name="Postavchik2">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar(max)" />
+    <Property Name="Adres" Type="nvarchar(max)" />
+    <Property Name="PHONE" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SignIn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="IDRole" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tovar">
+    <Key>
+      <PropertyRef Name="load_code" />
+    </Key>
+    <Property Name="load_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_load" Type="nvarchar(max)" />
+    <Property Name="quantity_in_stock" Type="nvarchar(max)" />
+    <Property Name="Unit" Type="nvarchar(max)" />
+    <Property Name="Stoimost_ediniz" Type="nvarchar(max)" />
+    <Property Name="Opisanie_tovara" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_POKUNKA_Code_tovar_Tovar_load_code">
+    <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+    <End Role="Pokunka" Type="Self.Pokunka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tovar">
+        <PropertyRef Name="load_code" />
+      </Principal>
+      <Dependent Role="Pokunka">
+        <PropertyRef Name="Code_tovar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pokunka_Postavchik_Postavchik_Number">
+    <End Role="Postavchik2" Type="Self.Postavchik2" Multiplicity="0..1" />
+    <End Role="Pokunka" Type="Self.Pokunka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postavchik2">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Pokunka">
+        <PropertyRef Name="Postavchik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SignIn_IDRole_Role_RoleID">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="SignIn">
+        <PropertyRef Name="IDRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Optovay_BazaModelContainer">
+    <EntitySet Name="Pokunka" EntityType="Self.Pokunka" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Postavchik2" EntityType="Self.Postavchik2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SignIn" EntityType="Self.SignIn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_POKUNKA_Code_tovar_Tovar_load_code" Association="Self.FK_POKUNKA_Code_tovar_Tovar_load_code">
+      <End Role="Tovar" EntitySet="Tovar" />
+      <End Role="Pokunka" EntitySet="Pokunka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pokunka_Postavchik_Postavchik_Number" Association="Self.FK_Pokunka_Postavchik_Postavchik_Number">
+      <End Role="Postavchik2" EntitySet="Postavchik2" />
+      <End Role="Pokunka" EntitySet="Pokunka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SignIn_IDRole_Role_RoleID" Association="Self.FK_SignIn_IDRole_Role_RoleID">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="SignIn" EntitySet="SignIn" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

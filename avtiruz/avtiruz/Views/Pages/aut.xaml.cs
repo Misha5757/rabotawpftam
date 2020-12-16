@@ -1,4 +1,5 @@
 ﻿using avtiruz.Context;
+using avtiruz.Views.Pages.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,16 +34,17 @@ namespace avtiruz.Views.Pages
 
         private void vhotdClick_Click(object sender, RoutedEventArgs e)
         {
-            var currentUser = dbContex.db.SignIn.FirstOrDefault(item => item.Username == Username.Text && item.Password == Password.Password);
+            var currentUser = dbContext.db.SignIn.FirstOrDefault(item => item.Username == Username.Text && item.Password == Password.Password);
             if (currentUser != null)
             {
                 switch (currentUser.IDRole)
                 {
                     case "A":
-                        MessageBox.Show("Привет, админчик");
+                        NavigationService.Navigate(new adm());
+                        
                         break;
                     case "U":
-                        MessageBox.Show("Привет, user");
+                        NavigationService.Navigate(new adm());
                         break;
 
 

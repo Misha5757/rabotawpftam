@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41e9fd29f8e4472ebc330ac14865aabc" Name="Diagram1">
+        <EntityTypeShape EntityType="Optovay_BazaModel.Pokunka" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Optovay_BazaModel.Postavchik2" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Optovay_BazaModel.Role" Width="1.5" PointX="2.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Optovay_BazaModel.SignIn" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Optovay_BazaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Optovay_BazaModel.Tovar" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="Optovay_BazaModel.FK_POKUNKA_Code_tovar_Tovar_load_code" ManuallyRouted="false" />
+        <AssociationConnector Association="Optovay_BazaModel.FK_Pokunka_Postavchik_Postavchik_Number" ManuallyRouted="false" />
+        <AssociationConnector Association="Optovay_BazaModel.FK_SignIn_IDRole_Role_RoleID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

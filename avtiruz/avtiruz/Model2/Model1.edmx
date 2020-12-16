@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Optovay_BazaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pokunka">
+          <Key>
+            <PropertyRef Name="Number_chet" />
+          </Key>
+          <Property Name="Number_chet" Type="int" Nullable="false" />
+          <Property Name="Stoimost" Type="nvarchar(max)" />
+          <Property Name="Srok_postavki" Type="nvarchar(max)" />
+          <Property Name="kol_vo_tovar" Type="nvarchar(max)" />
+          <Property Name="Code_tovar" Type="int" />
+          <Property Name="Postavchik" Type="int" />
+        </EntityType>
+        <EntityType Name="Postavchik2">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="PHONE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IDRole" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="load_code" />
+          </Key>
+          <Property Name="load_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_load" Type="nvarchar(max)" />
+          <Property Name="quantity_in_stock" Type="nvarchar(max)" />
+          <Property Name="Unit" Type="nvarchar(max)" />
+          <Property Name="Stoimost_ediniz" Type="nvarchar(max)" />
+          <Property Name="Opisanie_tovara" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_POKUNKA_Code_tovar_Tovar_load_code">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="Pokunka" Type="Self.Pokunka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="load_code" />
+            </Principal>
+            <Dependent Role="Pokunka">
+              <PropertyRef Name="Code_tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokunka_Postavchik_Postavchik_Number">
+          <End Role="Postavchik2" Type="Self.Postavchik2" Multiplicity="0..1" />
+          <End Role="Pokunka" Type="Self.Pokunka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavchik2">
+              <PropertyRef Name="Number" />
+            </Principal>
+            <Dependent Role="Pokunka">
+              <PropertyRef Name="Postavchik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_IDRole_Role_RoleID">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Optovay_BazaModelContainer">
+          <EntitySet Name="Pokunka" EntityType="Self.Pokunka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavchik2" EntityType="Self.Postavchik2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_POKUNKA_Code_tovar_Tovar_load_code" Association="Self.FK_POKUNKA_Code_tovar_Tovar_load_code">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Pokunka" EntitySet="Pokunka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokunka_Postavchik_Postavchik_Number" Association="Self.FK_Pokunka_Postavchik_Postavchik_Number">
+            <End Role="Postavchik2" EntitySet="Postavchik2" />
+            <End Role="Pokunka" EntitySet="Pokunka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_IDRole_Role_RoleID" Association="Self.FK_SignIn_IDRole_Role_RoleID">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Optovay_BazaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pokunka">
+          <Key>
+            <PropertyRef Name="Number_chet" />
+          </Key>
+          <Property Name="Number_chet" Type="Int32" Nullable="false" />
+          <Property Name="Stoimost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Srok_postavki" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kol_vo_tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Code_tovar" Type="Int32" />
+          <Property Name="Postavchik" Type="Int32" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_POKUNKA_Code_tovar_Tovar_load_code" FromRole="Pokunka" ToRole="Tovar" />
+          <NavigationProperty Name="Postavchik2" Relationship="Self.FK_Pokunka_Postavchik_Postavchik_Number" FromRole="Pokunka" ToRole="Postavchik2" />
+        </EntityType>
+        <EntityType Name="Postavchik2">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pokunka" Relationship="Self.FK_Pokunka_Postavchik_Postavchik_Number" FromRole="Postavchik2" ToRole="Pokunka" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SignIn" Relationship="Self.FK_SignIn_IDRole_Role_RoleID" FromRole="Role" ToRole="SignIn" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDRole" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_SignIn_IDRole_Role_RoleID" FromRole="SignIn" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="load_code" />
+          </Key>
+          <Property Name="load_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_load" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="quantity_in_stock" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Stoimost_ediniz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Opisanie_tovara" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pokunka" Relationship="Self.FK_POKUNKA_Code_tovar_Tovar_load_code" FromRole="Tovar" ToRole="Pokunka" />
+        </EntityType>
+        <Association Name="FK_POKUNKA_Code_tovar_Tovar_load_code">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="0..1" />
+          <End Role="Pokunka" Type="Self.Pokunka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="load_code" />
+            </Principal>
+            <Dependent Role="Pokunka">
+              <PropertyRef Name="Code_tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokunka_Postavchik_Postavchik_Number">
+          <End Role="Postavchik2" Type="Self.Postavchik2" Multiplicity="0..1" />
+          <End Role="Pokunka" Type="Self.Pokunka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavchik2">
+              <PropertyRef Name="Number" />
+            </Principal>
+            <Dependent Role="Pokunka">
+              <PropertyRef Name="Postavchik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_IDRole_Role_RoleID">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Optovay_BazaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pokunka" EntityType="Self.Pokunka" />
+          <EntitySet Name="Postavchik2" EntityType="Self.Postavchik2" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" />
+          <AssociationSet Name="FK_POKUNKA_Code_tovar_Tovar_load_code" Association="Self.FK_POKUNKA_Code_tovar_Tovar_load_code">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Pokunka" EntitySet="Pokunka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokunka_Postavchik_Postavchik_Number" Association="Self.FK_Pokunka_Postavchik_Postavchik_Number">
+            <End Role="Postavchik2" EntitySet="Postavchik2" />
+            <End Role="Pokunka" EntitySet="Pokunka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_IDRole_Role_RoleID" Association="Self.FK_SignIn_IDRole_Role_RoleID">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Optovay_BazaModelContainer" CdmEntityContainer="Optovay_BazaEntities">
+          <EntitySetMapping Name="Pokunka">
+            <EntityTypeMapping TypeName="Optovay_BazaModel.Pokunka">
+              <MappingFragment StoreEntitySet="Pokunka">
+                <ScalarProperty Name="Number_chet" ColumnName="Number_chet" />
+                <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+                <ScalarProperty Name="Srok_postavki" ColumnName="Srok_postavki" />
+                <ScalarProperty Name="kol_vo_tovar" ColumnName="kol_vo_tovar" />
+                <ScalarProperty Name="Code_tovar" ColumnName="Code_tovar" />
+                <ScalarProperty Name="Postavchik" ColumnName="Postavchik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavchik2">
+            <EntityTypeMapping TypeName="Optovay_BazaModel.Postavchik2">
+              <MappingFragment StoreEntitySet="Postavchik2">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Optovay_BazaModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SignIn">
+            <EntityTypeMapping TypeName="Optovay_BazaModel.SignIn">
+              <MappingFragment StoreEntitySet="SignIn">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Optovay_BazaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovar">
+            <EntityTypeMapping TypeName="Optovay_BazaModel.Tovar">
+              <MappingFragment StoreEntitySet="Tovar">
+                <ScalarProperty Name="load_code" ColumnName="load_code" />
+                <ScalarProperty Name="Name_load" ColumnName="Name_load" />
+                <ScalarProperty Name="quantity_in_stock" ColumnName="quantity_in_stock" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Stoimost_ediniz" ColumnName="Stoimost_ediniz" />
+                <ScalarProperty Name="Opisanie_tovara" ColumnName="Opisanie_tovara" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
