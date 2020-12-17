@@ -1,0 +1,72 @@
+﻿<Page x:Class="avtiruz.Views.Pages.Admin.adm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:avtiruz.Views.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="adm">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <!--Это 1 пространство-->
+        <Grid Grid.Row="0">
+          
+
+               
+        </Grid>
+       
+        <!--Это 2 пространство-->
+        <Grid Grid.Row="0">
+            <DataGrid  Margin="10" x:Name="dataView" ColumnWidth="*" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+             
+
+                    <DataGridTextColumn Header="Номер счета" Binding="{Binding Number_chet}" Width="77" />
+                    <DataGridTextColumn Header="Стоимость" Binding="{Binding Stoimost}" Width="110" />
+                    <DataGridTextColumn Header="Срок поставки" Binding="{Binding Srok_postavki}" Width="150" />
+                    <DataGridTextColumn Header="Количество товара" Binding="{Binding kol_vo_tovar}" Width="130"/>
+                    <DataGridTextColumn Header="Товар" Binding="{Binding Code_tovar}" Width="190" />
+                    <DataGridTextColumn Header="Поставщик" Binding="{Binding Postavchik}" Width="*" />
+                    <DataGridTextColumn Header="Номер товара" Binding="{Binding Tovar.load_code}" Width="*" />
+                    <DataGridTextColumn Header="ФИО Поставщика" Binding="{Binding Postavchik2.FIO}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+        <!--Это 3 пространство-->
+
+        <Grid Grid.Row="1">
+            <DataGrid  Margin="10" x:Name="dataView2" ColumnWidth="*" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Код товара" Binding="{Binding load_code}" Width="77" />
+                    <DataGridTextColumn Header="Название товара" Binding="{Binding Name_load}" Width="110" />
+                    <DataGridTextColumn Header="Количество в наличии" Binding="{Binding quantity_in_stock}" Width="150" />
+                    <DataGridTextColumn Header="Единица измерения" Binding="{Binding Unit}" Width="130"/>
+                    <DataGridTextColumn Header="Стоимость единицы товара" Binding="{Binding Stoimost_ediniz}" Width="190" />
+                    <DataGridTextColumn Header="Описание товара" Binding="{Binding Opisanie_tovara}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!--Это 2 пространство-->
+        <Grid Grid.Row="2">
+            <DataGrid  Margin="10" x:Name="dataView1" ColumnWidth="*" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер" Binding="{Binding Number}" Width="77" />
+                    <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="110" />
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding Adres}" Width="150" />
+                    <DataGridTextColumn Header="Телефон" Binding="{Binding PHONE}" Width="130"/>
+                   
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+    </Grid>
+
+
+</Page>

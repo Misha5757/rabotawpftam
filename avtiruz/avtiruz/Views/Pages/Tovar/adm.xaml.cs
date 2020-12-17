@@ -25,8 +25,9 @@ namespace avtiruz.Views.Pages.Admin
         public adm()
         {
             InitializeComponent();
-
-            dataView.ItemsSource = dbContext.db.Tovar.ToList();
+            dataView.ItemsSource = dbContext.db.Pokunka.ToList();
+            //dataView2.ItemsSource = dbContext.db.Tovar.ToList();
+            //dataView1.ItemsSource = dbContext.db.Postavchik2.ToList();
         }
 
        

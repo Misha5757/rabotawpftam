@@ -1,10 +1,8 @@
-C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Pages\Admin\adm.g.cs
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Pages\aut.g.cs
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Windows\MainWindow.g.cs
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\App.g.cs
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz_MarkupCompile.cache
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz_MarkupCompile.lref
-C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz.csprojAssemblyReference.cache
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz_Content.g.cs
 C:\Users\Secret\source\repos\avtiruz\avtiruz\bin\Debug\avtiruz.exe.config
 C:\Users\Secret\source\repos\avtiruz\avtiruz\bin\Debug\avtiruz.exe
@@ -14,7 +12,6 @@ C:\Users\Secret\source\repos\avtiruz\avtiruz\bin\Debug\EntityFramework.SqlServer
 C:\Users\Secret\source\repos\avtiruz\avtiruz\bin\Debug\EntityFramework.xml
 C:\Users\Secret\source\repos\avtiruz\avtiruz\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Secret\source\repos\avtiruz\avtiruz\bin\Debug\ru\EntityFramework.resources.dll
-C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Pages\Admin\adm.baml
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Pages\aut.baml
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Windows\MainWindow.baml
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz.g.resources
@@ -24,3 +21,5 @@ C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz.csproj.CoreCompil
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz.csproj.CopyComplete
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz.exe
 C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\avtiruz.pdb
+C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Pages\Tovar\adm.g.cs
+C:\Users\Secret\source\repos\avtiruz\avtiruz\obj\Debug\Views\Pages\Tovar\adm.baml
