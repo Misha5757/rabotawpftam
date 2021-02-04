@@ -1,0 +1,32 @@
+﻿<Page x:Class="WpfApp3.Viws.Pages.red"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp3.Viws.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="red" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10,10,-10,215" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="ID" Width="50"/>
+                <TextBox x:Name="ID1" Width="150"/>
+            </StackPanel>
+            <ComboBox HorizontalAlignment="Left"  Margin="366,141,0,0" VerticalAlignment="Top" Width="120"  x:Name="CPYy" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image x:Name="Imagee" Width="150" Height="150"  />
+                <Button Content="Выбрать" Width="120" Height="20"  x:Name="Vibrat" Click="Vibrat_Click" />
+                <Button Width="120" Height="20" Content="Добавить"  Click="add3_Click" x:Name="add3"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>
