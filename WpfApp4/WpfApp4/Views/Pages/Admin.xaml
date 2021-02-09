@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfApp4.Views.Pages.Admin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Admin">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.03*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="3">
+            <StackPanel>
+                <StackPanel>
+                    <Button Content="Добавить пользователя"  x:Name="Add" Click="Add_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border  Background="Aqua"/>
+            <Button Content="Доступ к складу" x:Name="Cklad" Click="Cklad_Click"  />
+        </Grid>
+    </Grid>
+</Page>
